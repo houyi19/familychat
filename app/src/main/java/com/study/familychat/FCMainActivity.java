@@ -23,7 +23,7 @@ public class FCMainActivity extends AppCompatActivity {
 
     private FrameLayout mPage;
     private TabLayout mNavBottom;
-    private Fragment[] mFragemts;
+    private TextView mMainTitle;
     private static int PAGE_NUM = 3;
 
 
@@ -40,6 +40,7 @@ public class FCMainActivity extends AppCompatActivity {
     private void InitView() {
         mPage = findViewById(R.id.act_fc_page);
         mNavBottom = findViewById(R.id.act_fc_navbottom);
+        mMainTitle = findViewById(R.id.act_main_title);
 
         mNavBottom.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @SuppressLint("ResourceAsColor")
@@ -50,7 +51,7 @@ public class FCMainActivity extends AppCompatActivity {
                 for (int i = 0; i < mNavBottom.getTabCount(); i++) {
                     View v = mNavBottom.getTabAt(i).getCustomView();
                     TextView mTitle = v.findViewById(R.id.nav_title);
-                    if(tab.isSelected()){
+                    if (tab.isSelected()) {
                         mTitle.setTextColor(R.color.nav_color_select);
                     } else {
                         mTitle.setTextColor(R.color.nav_color_no_select);
@@ -70,7 +71,7 @@ public class FCMainActivity extends AppCompatActivity {
         });
 
         for (int i = 0; i < PAGE_NUM; i++) {
-            mNavBottom.addTab(mNavBottom.newTab().setCustomView(NavBottomData.getTabView(this,i)));
+            mNavBottom.addTab(mNavBottom.newTab().setCustomView(NavBottomData.getTabView(this, i)));
         }
     }
 
@@ -80,16 +81,19 @@ public class FCMainActivity extends AppCompatActivity {
         switch (pos) {
             case 0:
                 fragment = PhotoFragment.newInstance();
+                mMainTitle.setText("亲友圈");
                 break;
             case 1:
                 fragment = NewsFragment.newInstance();
+                mMainTitle.setText("新闻");
                 break;
             case 2:
                 fragment = CalendarFragment.newInstance();
+                mMainTitle.setText("工具");
                 break;
         }
         if (fragment != null) {
-            FragmentManagerUtil.replaceFragment(getSupportFragmentManager(),R.id.act_fc_page,fragment);
+            FragmentManagerUtil.replaceFragment(getSupportFragmentManager(), R.id.act_fc_page, fragment);
         }
     }
 }
