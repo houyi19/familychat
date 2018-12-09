@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="nav_color_select">#0138ff</color>
+    <color name="nav_color_no_select">#73757b</color>
+    <color name="view_split_line">#000000</color>
+</resources>
