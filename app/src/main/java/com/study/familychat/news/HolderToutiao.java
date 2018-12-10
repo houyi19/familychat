@@ -20,7 +20,6 @@ public class HolderToutiao extends HolderBase<NewsBean> {
         mContext = v.getContext();
         mBg = v.findViewById(R.id.news_toutiao_bg);
         mTitle = v.findViewById(R.id.news_toutiao_title);
-
     }
 
     @Override
