@@ -63,7 +63,6 @@ public class NewsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_news, container, false);
-        parseJSONWithGSON(models,json);
         InitView(v);
         return v;
     }
@@ -71,6 +70,7 @@ public class NewsFragment extends Fragment {
     private void InitView(View v) {
         mRcycler = v.findViewById(R.id.frag_news_content);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
+        parseJSONWithGSON(models,json);
         mAdapter = new NewsAdapter(models);
         mRcycler.setLayoutManager(manager);
         mRcycler.setAdapter(mAdapter);

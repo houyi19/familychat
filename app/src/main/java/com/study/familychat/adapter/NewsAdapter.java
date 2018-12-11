@@ -38,10 +38,11 @@ public class NewsAdapter extends RecyclerViewAdapter {
         View v;
         HolderBase holderBase = null;
         if (viewType == newsType.TOU_TIAO) {
-            v = inflater.inflate(R.layout.holder_news_toutiao, parent);
+            v = inflater.inflate(R.layout.holder_news_toutiao, parent,false);
             holderBase = new HolderToutiao(v);
             return holderBase;
         }
+        super.saveHolderBaseRecycler(holderBase);
         return holderBase;
     }
 
