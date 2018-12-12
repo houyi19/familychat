@@ -1,10 +1,12 @@
 package com.study.familychat.network;
 
+import com.study.familychat.bean.JokeBean;
 import com.study.familychat.bean.historyDayBean;
 import com.study.familychat.bean.peoplebean;
 import com.study.familychat.bean.phonebean;
 import com.study.familychat.models.NewsInfo;
 import com.study.familychat.retrofit.HistoryDayService;
+import com.study.familychat.retrofit.JokeService;
 import com.study.familychat.retrofit.NewsService;
 import com.study.familychat.retrofit.PeopleService;
 import com.study.familychat.retrofit.PhoneService;
@@ -23,6 +25,7 @@ public class NetHandler {
     private static final String KEY_PHONE = "0622a979692f29dd68326c7ed2ca1a4f";
     private static final String KEY_HISTORY = "0622a979692f29dd68326c7ed2ca1a4f";
     private static final String KEY_NEWS = "2ff45d0ec09997206d2f800283173a9e";
+    private static final String KEY_JOKE = "9c49c37382d1f0a3ed9f3b299ed889b8";
 
 
     //进行retrofit的前缀地址；
@@ -59,4 +62,9 @@ public class NetHandler {
         return response;
     }
 
+
+    public static Observable<JokeBean> fetchJokeResponse(int page, int pagesize) {
+        Observable<JokeBean> response = getRetrofit(URL_BASE3).create(JokeService.class).getCall(KEY_JOKE, page, pagesize, "asc", "1418816972");
+        return response;
+    }
 }
