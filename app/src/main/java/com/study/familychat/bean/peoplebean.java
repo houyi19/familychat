@@ -1,36 +1,29 @@
 package com.study.familychat.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 public class peoplebean {
 
+    @SerializedName("resultcode")
     public String resultcode;
 
+    @SerializedName("reason")
     public String reason;
 
-    public result result;
+    @SerializedName("result")
+    public PeopleResultInfo result;
 
-    public static class result {
-        private String area;
-        private String sex;
-        private String birthday;
-        private String verify;
-    }
-
-    public String getArea() {
-        return result.area;
-    }
-
+    @SerializedName("error_code")
     public int error_code;
 
-    //定义 输出返回数据 的方法
-    public void show() {
-        System.out.println(resultcode);
-        System.out.print(reason);
 
-        System.out.println(result.area);
-        System.out.println(result.birthday);
-        System.out.println(result.sex);
-        System.out.println(result.verify);
-        System.out.println(error_code);
+    @Override
+    public String toString() {
+        return "peoplebean{" +
+                "resultcode='" + resultcode + '\'' +
+                ", reason='" + reason + '\'' +
+                ", result=" + result +
+                ", error_code=" + error_code +
+                '}';
     }
-
 }
