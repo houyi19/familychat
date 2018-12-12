@@ -10,9 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.study.familychat.R;
+import com.study.familychat.WebActivity;
 
 
 /**
@@ -55,8 +55,10 @@ public class CalendarFragment extends Fragment implements View.OnClickListener {
                 toCall();
                 break;
             case R.id.cal_btn_research:
+                toBaiDu();
                 break;
             case R.id.cal_btn_map:
+                toGaoDeiMap();
                 break;
         }
     }
@@ -68,6 +70,19 @@ public class CalendarFragment extends Fragment implements View.OnClickListener {
         Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:13237111779"));
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
+    }
+
+    private void toBaiDu() {
+
+        //跳转到百度一下
+        Intent i = new Intent(getActivity(), WebActivity.class);
+        i.putExtra("url", "http://www.baidu.com");
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
+    }
+
+    private void toGaoDeiMap() {
+
     }
 
 }
