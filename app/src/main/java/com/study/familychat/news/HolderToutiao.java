@@ -25,8 +25,8 @@ public class HolderToutiao extends HolderBase<NewsBean> {
     @Override
     public void bindHolder(NewsBean newsBean) {
         super.bindHolder(newsBean);
-        Glide.with(mContext).load(newsBean.getUrl()).into(mBg);
-        mTitle.setText(newsBean.getTitle());
+        Glide.with(mContext).load(newsBean.url).into(mBg);
+        mTitle.setText(newsBean.url);
     }
 
     @Override

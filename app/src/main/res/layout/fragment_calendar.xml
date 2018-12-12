@@ -35,17 +35,26 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include
+            <Button
                 android:id="@+id/cal_btn_call"
-                layout="@layout/cal_bottom_call" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:background="@drawable/tool_group_background" />
 
-            <include
+            <Button
                 android:id="@+id/cal_btn_research"
-                layout="@layout/cal_bottom_call" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:background="@drawable/tool_group_background" />
 
-            <include
+            <Button
                 android:id="@+id/cal_btn_map"
-                layout="@layout/cal_bottom_call" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:background="@drawable/tool_group_background" />
         </LinearLayout>
     </ScrollView>
 

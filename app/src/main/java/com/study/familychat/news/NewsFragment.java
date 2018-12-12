@@ -30,26 +30,6 @@ public class NewsFragment extends Fragment {
     private RecyclerView mRcycler;
     private NewsAdapter mAdapter;
     private ArrayList<NewsBean> models = new ArrayList<>();
-    private String json = "[" +
-            "{" + "\"uniquekey\":\"9a0e048df3c358f9d473d67be86902ba\"," +
-            "\"title\":\"佐罗腕表；独领风骚的N厂V7版劳力士绿水鬼\"," +
-            "\"date\":\"2018-12-09 16:17\"," +
-            "\"category\":\"头条\"," +
-            "\"author_name\":\"堡威时尚\"," +
-            "\"url\":\"http://mini.eastday.com/mobile/181209161708037.html\"," +
-            "\"thumbnail_pic_s\":\"http://04imgmini.eastday.com/mobile/20181209/20181209161708_564c126542db7f824cb99b6b607c7cfb_5_mwpm_03200403.jpg\",\n" +
-            "\"thumbnail_pic_s02\":\"http://04imgmini.eastday.com/mobile/20181209/20181209161708_564c126542db7f824cb99b6b607c7cfb_2_mwpm_03200403.jpg\",\n" +
-            "\"thumbnail_pic_s03\":\"http://04imgmini.eastday.com/mobile/20181209/20181209161708_564c126542db7f824cb99b6b607c7cfb_6_mwpm_03200403.jpg\"},\n"
-            + "{"
-            + "\"uniquekey\":\"9a0e048df3c358f9d473d67be86902ba\",\n" +
-            "\"title\":\"佐罗腕表；独领风骚的N厂V7版劳力士绿水鬼\",\n" +
-            "\"date\":\"2018-12-09 16:17\",\n" +
-            "\"category\":\"头条\",\n" +
-            "\"author_name\":\"堡威时尚\",\n" +
-            "\"url\":\"http://mini.eastday.com/mobile/181209161708037.html\",\n" +
-            "\"thumbnail_pic_s\":\"http://04imgmini.eastday.com/mobile/20181209/20181209161708_564c126542db7f824cb99b6b607c7cfb_5_mwpm_03200403.jpg\",\n" +
-            "\"thumbnail_pic_s02\":\"http://04imgmini.eastday.com/mobile/20181209/20181209161708_564c126542db7f824cb99b6b607c7cfb_2_mwpm_03200403.jpg\",\n" +
-            "\"thumbnail_pic_s03\":\"http://04imgmini.eastday.com/mobile/20181209/20181209161708_564c126542db7f824cb99b6b607c7cfb_6_mwpm_03200403.jpg\" }" + "]";
 
 
     public static NewsFragment newInstance() {
@@ -70,7 +50,7 @@ public class NewsFragment extends Fragment {
     private void InitView(View v) {
         mRcycler = v.findViewById(R.id.frag_news_content);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        parseJSONWithGSON(models,json);
+//        parseJSONWithGSON(models,json);
         mAdapter = new NewsAdapter(models);
         mRcycler.setLayoutManager(manager);
         mRcycler.setAdapter(mAdapter);
@@ -87,13 +67,13 @@ public class NewsFragment extends Fragment {
         mRcycler.setAdapter(null);
     }
 
-    private void parseJSONWithGSON(ArrayList<NewsBean>models,String json) {
+    private void parseJSONWithGSON(ArrayList<NewsBean> models, String json) {
 //        Gson gson = new Gson();
 //        models = gson.fromJson(json,new TypeToken<ArrayList<NewsBean>>(){}.getType());
         try {
-            JSONArray jsonArray= new JSONArray(json);
-            for(int i=0;i < jsonArray.length();i++) {
-                if (jsonArray.getJSONObject(i)!= null) {
+            JSONArray jsonArray = new JSONArray(json);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                if (jsonArray.getJSONObject(i) != null) {
                     String uniquekey = jsonArray.getJSONObject(i).optString("uniquekey");
                     String title = jsonArray.getJSONObject(i).optString("title");
                     String date = jsonArray.getJSONObject(i).optString("date");
@@ -103,8 +83,7 @@ public class NewsFragment extends Fragment {
                     String thumbnail_pic_s = jsonArray.getJSONObject(i).optString("thumbnail_pic_s");
                     String thumbnail_pic_s02 = jsonArray.getJSONObject(i).optString("thumbnail_pic_s02");
                     String thumbnail_pic_s03 = jsonArray.getJSONObject(i).optString("thumbnail_pic_s03");
-                    Log.i("main1",i+title+url);
-                    models.add(new NewsBean(uniquekey, title, date, category, author_name, url, thumbnail_pic_s, thumbnail_pic_s02, thumbnail_pic_s03));
+                    Log.i("main1", i + title + url);
                 }
             }
 

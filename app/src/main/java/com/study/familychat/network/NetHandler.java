@@ -3,7 +3,9 @@ package com.study.familychat.network;
 import com.study.familychat.bean.historyDayBean;
 import com.study.familychat.bean.peoplebean;
 import com.study.familychat.bean.phonebean;
+import com.study.familychat.models.NewsInfo;
 import com.study.familychat.retrofit.HistoryDayService;
+import com.study.familychat.retrofit.NewsService;
 import com.study.familychat.retrofit.PeopleService;
 import com.study.familychat.retrofit.PhoneService;
 
@@ -20,10 +22,14 @@ public class NetHandler {
     private static final String KEY_IDCARD = "7bdb988c3ece23dbc65f4e8e59e42880";
     private static final String KEY_PHONE = "0622a979692f29dd68326c7ed2ca1a4f";
     private static final String KEY_HISTORY = "0622a979692f29dd68326c7ed2ca1a4f";
+    private static final String KEY_NEWS = "2ff45d0ec09997206d2f800283173a9e";
+
 
     //进行retrofit的前缀地址；
     private static final String URL_BASE1 = "http://apis.juhe.cn/";
     private static final String URL_BASE2 = "http://api.juheapi.com/";
+    private static final String URL_BASE3 = "http://v.juhe.cn/";
+
 
     private static Retrofit getRetrofit(String url) {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(url)
@@ -47,4 +53,10 @@ public class NetHandler {
         Observable<historyDayBean> response = getRetrofit(URL_BASE2).create(HistoryDayService.class).getCall(KEY_HISTORY, v, m, day);
         return response;
     }
+
+    public static Observable<NewsInfo> getNewsResponse(String type) {
+        Observable<NewsInfo> response = getRetrofit(URL_BASE3).create(NewsService.class).fetchNewsBean(type, KEY_NEWS);
+        return response;
+    }
+
 }

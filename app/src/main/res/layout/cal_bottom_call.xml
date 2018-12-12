@@ -5,7 +5,8 @@
     android:orientation="vertical">
 
     <Button
-        android:background="@drawable/tool_group_background"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:background="@drawable/tool_group_background" />
 </LinearLayout>
