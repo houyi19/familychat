@@ -17,6 +17,7 @@ import com.study.familychat.news.NewsFragment;
 import com.study.familychat.tool.CalendarFragment;
 import com.study.familychat.tool.ToolContainerFragment;
 import com.study.familychat.utils.FragmentManagerUtil;
+import com.study.familychat.utils.PermissionGuideUtil;
 
 import org.w3c.dom.Text;
 
@@ -36,6 +37,7 @@ public class FCMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_fc);
 //        mFragemts = NavBottomData.getFragments("hello");
         InitView();
+        PermissionGuideUtil.newInstance().GrantPermission(getApplicationContext(),this);
     }
 
     private void InitView() {
