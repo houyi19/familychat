@@ -15,6 +15,7 @@ import com.study.familychat.chat.PhotoFragment;
 import com.study.familychat.models.NavBottomData;
 import com.study.familychat.news.NewsFragment;
 import com.study.familychat.tool.CalendarFragment;
+import com.study.familychat.tool.ToolContainerFragment;
 import com.study.familychat.utils.FragmentManagerUtil;
 
 import org.w3c.dom.Text;
@@ -88,7 +89,7 @@ public class FCMainActivity extends AppCompatActivity {
                 mMainTitle.setText("新闻");
                 break;
             case 2:
-                fragment = CalendarFragment.newInstance();
+                fragment = ToolContainerFragment.newInstance();
                 mMainTitle.setText("工具");
                 break;
         }

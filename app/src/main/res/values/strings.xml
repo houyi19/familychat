@@ -4,4 +4,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tool_life_help">生活助手</string>
+    <string name="tool_container_calendar">日历</string>
+    <string name="tool_container_weather">天气</string>
+    <string name="tool_container_call">打电话</string>
+    <string name="tool_container_research">搜一搜</string>
 </resources>
