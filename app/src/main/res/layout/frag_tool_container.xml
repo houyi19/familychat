@@ -14,7 +14,7 @@
             android:id="@+id/frag_tool_container_cal"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@drawable/tool_group_background"
+            android:background="@drawable/shape_press"
             android:gravity="center">
 
             <TextView
@@ -29,7 +29,7 @@
             android:id="@+id/frag_tool_container_weather"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@drawable/shape_tool_container_bg"
+            android:background="@drawable/shape_press"
             android:gravity="center">
 
             <TextView
@@ -44,7 +44,7 @@
             android:id="@+id/frag_tool_container_call"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@drawable/tool_group_background"
+            android:background="@drawable/shape_press"
             android:gravity="center">
 
             <TextView
@@ -59,7 +59,7 @@
             android:id="@+id/frag_tool_container_research"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@drawable/tool_group_background"
+            android:background="@drawable/shape_press"
             android:gravity="center">
 
             <TextView
