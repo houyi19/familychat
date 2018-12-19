@@ -15,6 +15,7 @@ import com.google.gson.reflect.TypeToken;
 import com.study.familychat.R;
 import com.study.familychat.adapter.NewsAdapter;
 import com.study.familychat.models.NewsBean;
+import com.study.familychat.presenter.NewsPresenter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,6 +31,7 @@ public class NewsFragment extends Fragment {
     private RecyclerView mRcycler;
     private NewsAdapter mAdapter;
     private ArrayList<NewsBean> models = new ArrayList<>();
+    private NewsPresenter mPersenter;
 
 
     public static NewsFragment newInstance() {
