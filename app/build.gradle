@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'familychat'
+            keyPassword '10230119.'
+            storeFile file('G:/familychat/familychat/app/keystore.jks')
+            storePassword '10230119.'
+        }
+    }
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.study.familychat"
@@ -33,9 +41,12 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.1.1'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
-    implementation "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     // Retrofit库
     implementation 'com.squareup.okhttp3:okhttp:3.12.0'
     // Okhttp库
+    implementation 'com.amap.api:map2d:5.2.0'
+    implementation 'com.amap.api:location:4.4.0'
+    implementation 'com.amap.api:search:6.5.0'
 }
