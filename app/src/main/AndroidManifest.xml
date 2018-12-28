@@ -28,7 +28,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".WebActivity"
+            android:name=".tool.WebActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".tool.WeatherActivity"
             android:screenOrientation="portrait"/>
     </application>
 

@@ -12,11 +12,11 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.study.familychat.R;
-import com.study.familychat.WebActivity;
 
 public class ToolContainerFragment extends Fragment implements View.OnClickListener {
 
     private LinearLayout mCall, mResearch, mCalendar, mMap, mWeather;
+    private LinearLayout mToolContainers;
 
 
     public static ToolContainerFragment newInstance() {
@@ -33,14 +33,17 @@ public class ToolContainerFragment extends Fragment implements View.OnClickListe
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.frag_tool_container, container, false);
+        mToolContainers = v.findViewById(R.id.frag_tool_containers);
         mCalendar = v.findViewById(R.id.frag_tool_container_cal);
         mCall = v.findViewById(R.id.frag_tool_container_call);
         mWeather = v.findViewById(R.id.frag_tool_container_weather);
         mResearch = v.findViewById(R.id.frag_tool_container_research);
+        mMap = v.findViewById(R.id.frag_tool_container_map);
         mCalendar.setOnClickListener(this);
         mCall.setOnClickListener(this);
         mWeather.setOnClickListener(this);
         mResearch.setOnClickListener(this);
+        mMap.setOnClickListener(this);
         return v;
     }
 
@@ -48,14 +51,18 @@ public class ToolContainerFragment extends Fragment implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.frag_tool_container_cal:
+                toCalender();
                 break;
             case R.id.frag_tool_container_weather:
+                toWeather();
                 break;
             case R.id.frag_tool_container_call:
                 toCall();
                 break;
             case R.id.frag_tool_container_research:
                 toBaiDu();
+                break;
+            case R.id.frag_tool_container_map:
                 break;
             default:
                 break;
@@ -77,5 +84,14 @@ public class ToolContainerFragment extends Fragment implements View.OnClickListe
         i.putExtra("url", "http://www.baidu.com");
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
+    }
+
+    private void toWeather() {
+        Intent i = new Intent(getActivity(),WeatherActivity.class);
+        startActivity(i);
+    }
+
+    private void toCalender() {
+
     }
 }

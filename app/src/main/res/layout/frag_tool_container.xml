@@ -6,14 +6,16 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/frag_tool_containers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
+            android:layout_margin="5dp"
             android:id="@+id/frag_tool_container_cal"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="50dp"
             android:background="@drawable/shape_press"
             android:gravity="center">
 
@@ -21,14 +23,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tool_container_calendar"
+                android:textColor="#ffffff"
                 tool:text="日历" />
         </LinearLayout>
 
 
         <LinearLayout
+            android:layout_margin="5dp"
             android:id="@+id/frag_tool_container_weather"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="50dp"
             android:background="@drawable/shape_press"
             android:gravity="center">
 
@@ -36,14 +40,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tool_container_weather"
+                android:textColor="#ffffff"
                 tool:text="天气" />
         </LinearLayout>
 
 
         <LinearLayout
+            android:layout_margin="5dp"
             android:id="@+id/frag_tool_container_call"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="50dp"
             android:background="@drawable/shape_press"
             android:gravity="center">
 
@@ -51,14 +57,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tool_container_call"
+                android:textColor="#ffffff"
                 tool:text="打电话" />
         </LinearLayout>
 
 
         <LinearLayout
+            android:layout_margin="5dp"
             android:id="@+id/frag_tool_container_research"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="50dp"
             android:background="@drawable/shape_press"
             android:gravity="center">
 
@@ -66,7 +74,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tool_container_research"
+                android:textColor="#ffffff"
                 tool:text="搜一搜" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="5dp"
+            android:id="@+id/frag_tool_container_map"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/shape_press"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tool_container_map"
+                android:textColor="#ffffff"
+                tool:text="地图导航" />
         </LinearLayout>
     </LinearLayout>
 

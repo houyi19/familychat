@@ -1,4 +1,4 @@
-package com.study.familychat;
+package com.study.familychat.tool;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
@@ -11,6 +11,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.study.familychat.R;
 
 public class WebActivity extends AppCompatActivity {
 

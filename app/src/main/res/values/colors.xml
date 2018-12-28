@@ -6,4 +6,5 @@
     <color name="nav_color_select">#0138ff</color>
     <color name="nav_color_no_select">#73757b</color>
     <color name="view_split_line">#000000</color>
+    <color name="tool_bg_color">#267ace</color>
 </resources>

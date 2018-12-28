@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.study.familychat.R;
-import com.study.familychat.WebActivity;
 
 
 /**
