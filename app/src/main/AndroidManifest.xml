@@ -39,8 +39,9 @@
             android:name=".tool.WebActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".tool.WeatherActivity"
+            android:name=".tool.MapActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".tool.WeatherActivity"></activity>
     </application>
 
 </manifest>

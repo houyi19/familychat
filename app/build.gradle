@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'familychat'
             keyPassword '10230119.'
-            storeFile file('G:/familychat/familychat/app/keystore.jks')
+            storeFile file('./app/keystore.jks')
             storePassword '10230119.'
         }
     }

@@ -63,6 +63,7 @@ public class ToolContainerFragment extends Fragment implements View.OnClickListe
                 toBaiDu();
                 break;
             case R.id.frag_tool_container_map:
+                toMap();
                 break;
             default:
                 break;
@@ -93,5 +94,10 @@ public class ToolContainerFragment extends Fragment implements View.OnClickListe
 
     private void toCalender() {
 
+    }
+
+    private void toMap() {
+        Intent i = new Intent(getActivity(),MapActivity.class);
+        startActivity(i);
     }
 }
