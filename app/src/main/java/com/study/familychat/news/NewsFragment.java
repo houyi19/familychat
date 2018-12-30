@@ -10,12 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.study.familychat.R;
 import com.study.familychat.adapter.NewsAdapter;
+import com.study.familychat.base.ErrorFragment;
+import com.study.familychat.base.LoadingFragment;
+import com.study.familychat.contract.NewsContract;
 import com.study.familychat.models.NewsBean;
 import com.study.familychat.presenter.NewsPresenter;
+import com.study.familychat.utils.FragmentManagerUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,7 +28,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewsFragment extends Fragment {
+public class NewsFragment extends Fragment implements NewsContract.INewsView{
 
     private RecyclerView mRcycler;
     private NewsAdapter mAdapter;
@@ -52,10 +54,17 @@ public class NewsFragment extends Fragment {
     private void InitView(View v) {
         mRcycler = v.findViewById(R.id.frag_news_content);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
-//        parseJSONWithGSON(models,json);
         mAdapter = new NewsAdapter(models);
         mRcycler.setLayoutManager(manager);
         mRcycler.setAdapter(mAdapter);
+        fetchData(true);
+    }
+
+    private void fetchData(boolean isFirstFetch) {
+        if (mPersenter == null) {
+            mPersenter = new NewsPresenter(this);
+        }
+        mPersenter.fetchData(isFirstFetch);
     }
 
     @Override
@@ -69,29 +78,18 @@ public class NewsFragment extends Fragment {
         mRcycler.setAdapter(null);
     }
 
-    private void parseJSONWithGSON(ArrayList<NewsBean> models, String json) {
-//        Gson gson = new Gson();
-//        models = gson.fromJson(json,new TypeToken<ArrayList<NewsBean>>(){}.getType());
-        try {
-            JSONArray jsonArray = new JSONArray(json);
-            for (int i = 0; i < jsonArray.length(); i++) {
-                if (jsonArray.getJSONObject(i) != null) {
-                    String uniquekey = jsonArray.getJSONObject(i).optString("uniquekey");
-                    String title = jsonArray.getJSONObject(i).optString("title");
-                    String date = jsonArray.getJSONObject(i).optString("date");
-                    String category = jsonArray.getJSONObject(i).optString("category");
-                    String author_name = jsonArray.getJSONObject(i).optString("author_name");
-                    String url = jsonArray.getJSONObject(i).optString("url");
-                    String thumbnail_pic_s = jsonArray.getJSONObject(i).optString("thumbnail_pic_s");
-                    String thumbnail_pic_s02 = jsonArray.getJSONObject(i).optString("thumbnail_pic_s02");
-                    String thumbnail_pic_s03 = jsonArray.getJSONObject(i).optString("thumbnail_pic_s03");
-                    Log.i("main1", i + title + url);
-                }
-            }
+    @Override
+    public void onLoadingPage() {
+        FragmentManagerUtil.replaceFragment(getFragmentManager(),R.id.act_fc_page, LoadingFragment.newInstance());
+    }
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+    @Override
+    public void onFetchDataError() {
+        FragmentManagerUtil.replaceFragment(getFragmentManager(),R.id.act_fc_page, ErrorFragment.newInstance());
+    }
+
+    @Override
+    public void onFetchDataResult(NewsBean newsBean) {
 
     }
 }

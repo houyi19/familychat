@@ -6,8 +6,10 @@ import com.study.familychat.models.NewsInfo;
 import com.study.familychat.network.NetHandler;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
@@ -24,8 +26,16 @@ public class NewsPresenter extends BasePrenster<NewsContract.INewsView> implemen
 
 
     @Override
-    public void fetchData(boolean isFirstFetch) {
-        mCompositeDisposable.add(NetHandler.getNewsResponse("top").subscribeOn(Schedulers.io()).map(new Function<NewsInfo, NewsBean[]>() {
+    public void fetchData(final boolean isFirstFetch) {
+        Disposable disposable = Observable.just(isFirstFetch).flatMap(new Function<Boolean, ObservableSource<NewsInfo>>() {
+            @Override
+            public ObservableSource<NewsInfo> apply(Boolean aBoolean) throws Exception {
+                if (isFirstFetch && mView != null) {
+                    mView.onLoadingPage();
+                }
+                return NetHandler.getNewsResponse("top");
+            }
+        }).subscribeOn(Schedulers.io()).map(new Function<NewsInfo, NewsBean[]>() {
             @Override
             public NewsBean[] apply(NewsInfo newsInfo) throws Exception {
                 return newsInfo.result.data;
@@ -33,18 +43,23 @@ public class NewsPresenter extends BasePrenster<NewsContract.INewsView> implemen
         }).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<NewsBean[]>() {
             @Override
             public void accept(NewsBean[] newsBeans) throws Exception {
-
+                if (mView != null) {
+                    mView.onFetchDataResult(newsBeans[1]);
+                }
             }
         }, new Consumer<Throwable>() {
             @Override
             public void accept(Throwable throwable) throws Exception {
-
+              if (mView != null) {
+                  mView.onFetchDataError();
+              }
             }
         }, new Action() {
             @Override
             public void run() throws Exception {
 
             }
-        }));
+        });
+        mCompositeDisposable.add(disposable);
     }
 }
