@@ -9,14 +9,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.study.familychat.R;
+import com.study.familychat.tool.views.ToolItemView;
 
 public class ToolContainerFragment extends Fragment implements View.OnClickListener {
 
-    private LinearLayout mCall, mResearch, mCalendar, mMap, mWeather;
-    private LinearLayout mToolContainers;
+    private ToolItemView mCalendar, mWeather,mCall, mResearch, mMap;
 
 
     public static ToolContainerFragment newInstance() {
@@ -33,7 +32,6 @@ public class ToolContainerFragment extends Fragment implements View.OnClickListe
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.frag_tool_container, container, false);
-        mToolContainers = v.findViewById(R.id.frag_tool_containers);
         mCalendar = v.findViewById(R.id.frag_tool_container_cal);
         mCall = v.findViewById(R.id.frag_tool_container_call);
         mWeather = v.findViewById(R.id.frag_tool_container_weather);
@@ -88,7 +86,7 @@ public class ToolContainerFragment extends Fragment implements View.OnClickListe
     }
 
     private void toWeather() {
-        Intent i = new Intent(getActivity(),WeatherActivity.class);
+        Intent i = new Intent(getActivity(), WeatherActivity.class);
         startActivity(i);
     }
 
@@ -97,7 +95,7 @@ public class ToolContainerFragment extends Fragment implements View.OnClickListe
     }
 
     private void toMap() {
-        Intent i = new Intent(getActivity(),MapActivity.class);
+        Intent i = new Intent(getActivity(), MapActivity.class);
         startActivity(i);
     }
 }

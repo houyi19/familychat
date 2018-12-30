@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,88 +12,46 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_margin="5dp"
+        <com.study.familychat.tool.views.ToolItemView
             android:id="@+id/frag_tool_container_cal"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/shape_press"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tool_container_calendar"
-                android:textColor="#ffffff"
-                tool:text="日历" />
-        </LinearLayout>
-
-
-        <LinearLayout
             android:layout_margin="5dp"
+            app:tool_item_icon="@drawable/icon_calender"
+            app:tool_item_txt="@string/tool_container_calendar" />
+
+        <com.study.familychat.tool.views.ToolItemView
             android:id="@+id/frag_tool_container_weather"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/shape_press"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tool_container_weather"
-                android:textColor="#ffffff"
-                tool:text="天气" />
-        </LinearLayout>
-
-
-        <LinearLayout
             android:layout_margin="5dp"
+            app:tool_item_icon="@drawable/icon_weather"
+            app:tool_item_txt="@string/tool_container_weather" />
+
+
+        <com.study.familychat.tool.views.ToolItemView
             android:id="@+id/frag_tool_container_call"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/shape_press"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tool_container_call"
-                android:textColor="#ffffff"
-                tool:text="打电话" />
-        </LinearLayout>
-
-
-        <LinearLayout
             android:layout_margin="5dp"
+            app:tool_item_icon="@drawable/icon_phone"
+            app:tool_item_txt="@string/tool_container_call" />
+
+        <com.study.familychat.tool.views.ToolItemView
             android:id="@+id/frag_tool_container_research"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/shape_press"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tool_container_research"
-                android:textColor="#ffffff"
-                tool:text="搜一搜" />
-        </LinearLayout>
-
-        <LinearLayout
             android:layout_margin="5dp"
+            app:tool_item_icon="@drawable/icon_search"
+            app:tool_item_txt="@string/tool_container_research" />
+
+        <com.study.familychat.tool.views.ToolItemView
             android:id="@+id/frag_tool_container_map"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/shape_press"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tool_container_map"
-                android:textColor="#ffffff"
-                tool:text="地图导航" />
-        </LinearLayout>
+            android:layout_margin="5dp"
+            app:tool_item_icon="@drawable/icon_map"
+            app:tool_item_txt="@string/tool_container_map" />
     </LinearLayout>
 
 </ScrollView>
