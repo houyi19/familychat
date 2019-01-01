@@ -13,7 +13,7 @@ public class NewsContract {
 
         void onFetchDataError();
 
-        void onFetchDataResult(NewsBean newsBean);
+        void onFetchDataResult(NewsBean[] newsBean);
     }
 
     public interface INewsPresenter<V extends INewsView> extends IPresenter<V> {

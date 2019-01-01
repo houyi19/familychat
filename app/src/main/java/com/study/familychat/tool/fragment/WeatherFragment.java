@@ -1,4 +1,4 @@
-package com.study.familychat.tool;
+package com.study.familychat.tool.fragment;
 
 
 import android.os.Bundle;

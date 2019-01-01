@@ -1,5 +1,7 @@
 package com.study.familychat.presenter;
 
+import android.util.Log;
+
 import com.study.familychat.contract.NewsContract;
 import com.study.familychat.models.NewsBean;
 import com.study.familychat.models.NewsInfo;
@@ -17,7 +19,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class NewsPresenter extends BasePrenster<NewsContract.INewsView> implements NewsContract.INewsPresenter<NewsContract.INewsView> {
     public static final String TAG = NewsPresenter.class.getSimpleName();
-  private CompositeDisposable mCompositeDisposable;
+    private CompositeDisposable mCompositeDisposable;
 
     public NewsPresenter(NewsContract.INewsView itemView) {
         setView(itemView);
@@ -30,7 +32,7 @@ public class NewsPresenter extends BasePrenster<NewsContract.INewsView> implemen
         Disposable disposable = Observable.just(isFirstFetch).flatMap(new Function<Boolean, ObservableSource<NewsInfo>>() {
             @Override
             public ObservableSource<NewsInfo> apply(Boolean aBoolean) throws Exception {
-                if (isFirstFetch && mView != null) {
+                if (!isFirstFetch && mView != null) {
                     mView.onLoadingPage();
                 }
                 return NetHandler.getNewsResponse("top");
@@ -44,15 +46,16 @@ public class NewsPresenter extends BasePrenster<NewsContract.INewsView> implemen
             @Override
             public void accept(NewsBean[] newsBeans) throws Exception {
                 if (mView != null) {
-                    mView.onFetchDataResult(newsBeans[1]);
+                    Log.i(TAG, String.valueOf(newsBeans[0]));
+                    mView.onFetchDataResult(newsBeans);
                 }
             }
         }, new Consumer<Throwable>() {
             @Override
             public void accept(Throwable throwable) throws Exception {
-              if (mView != null) {
-                  mView.onFetchDataError();
-              }
+                if (mView != null) {
+                    mView.onFetchDataError();
+                }
             }
         }, new Action() {
             @Override

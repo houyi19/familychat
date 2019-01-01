@@ -1,6 +1,7 @@
 package com.study.familychat.adapter;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,23 +13,24 @@ import com.study.familychat.news.HolderToutiao;
 import com.study.familychat.news.newsType;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class NewsAdapter extends RecyclerViewAdapter {
+    private static final String TAG = NewsAdapter.class.getSimpleName();
     ArrayList<NewsBean> models;
 
-    public NewsAdapter(ArrayList<NewsBean> model) {
+    public NewsAdapter() {
         models = new ArrayList<>();
-        if (model != null) {
-            appendData(models, model);
-        } else {
-            return;
-        }
     }
 
-    private void appendData(ArrayList<NewsBean> des, ArrayList<NewsBean> src) {
-        for (int i = 0; i < src.size(); i++) {
-            des.add(src.get(i));
+    public void appendData(NewsBean[] model) {
+        if (model.length == 0) {
+            return;
         }
+        Log.i(TAG, String.valueOf(model[0]));
+        models.clear();
+        models.addAll(Arrays.asList(model));
+        notifyDataSetChanged();
     }
 
 
@@ -38,7 +40,7 @@ public class NewsAdapter extends RecyclerViewAdapter {
         View v;
         HolderBase holderBase = null;
         if (viewType == newsType.TOU_TIAO) {
-            v = inflater.inflate(R.layout.holder_news_toutiao, parent,false);
+            v = inflater.inflate(R.layout.holder_news_toutiao, parent, false);
             holderBase = new HolderToutiao(v);
             return holderBase;
         }
@@ -58,6 +60,7 @@ public class NewsAdapter extends RecyclerViewAdapter {
         if (models.isEmpty()) {
             return 0;
         }
+        Log.i(TAG, String.valueOf(models.size()));
         return models.size();
     }
 

@@ -9,7 +9,7 @@ public class NewsBean extends Object{
 
     @SerializedName("title")
     //请求的新闻标题
-    private String title;
+    public String title;
     @SerializedName("date")
     //date
     private String date;

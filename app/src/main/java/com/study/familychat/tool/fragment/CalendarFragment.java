@@ -1,4 +1,4 @@
-package com.study.familychat.tool;
+package com.study.familychat.tool.fragment;
 
 
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.study.familychat.R;
+import com.study.familychat.tool.WebActivity;
 
 
 /**

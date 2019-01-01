@@ -19,20 +19,15 @@ import com.study.familychat.models.NewsBean;
 import com.study.familychat.presenter.NewsPresenter;
 import com.study.familychat.utils.FragmentManagerUtil;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewsFragment extends Fragment implements NewsContract.INewsView{
+public class NewsFragment extends Fragment implements NewsContract.INewsView {
 
+    private static final String TAG = NewsFragment.class.getSimpleName();
     private RecyclerView mRcycler;
     private NewsAdapter mAdapter;
-    private ArrayList<NewsBean> models = new ArrayList<>();
     private NewsPresenter mPersenter;
 
 
@@ -54,9 +49,9 @@ public class NewsFragment extends Fragment implements NewsContract.INewsView{
     private void InitView(View v) {
         mRcycler = v.findViewById(R.id.frag_news_content);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        mAdapter = new NewsAdapter(models);
-        mRcycler.setLayoutManager(manager);
+        mAdapter = new NewsAdapter();
         mRcycler.setAdapter(mAdapter);
+        mRcycler.setLayoutManager(manager);
         fetchData(true);
     }
 
@@ -80,16 +75,17 @@ public class NewsFragment extends Fragment implements NewsContract.INewsView{
 
     @Override
     public void onLoadingPage() {
-        FragmentManagerUtil.replaceFragment(getFragmentManager(),R.id.act_fc_page, LoadingFragment.newInstance());
+        FragmentManagerUtil.replaceFragment(getFragmentManager(), R.id.act_fc_page, LoadingFragment.newInstance());
     }
 
     @Override
     public void onFetchDataError() {
-        FragmentManagerUtil.replaceFragment(getFragmentManager(),R.id.act_fc_page, ErrorFragment.newInstance());
+        FragmentManagerUtil.replaceFragment(getFragmentManager(), R.id.act_fc_page, ErrorFragment.newInstance());
     }
 
     @Override
-    public void onFetchDataResult(NewsBean newsBean) {
-
+    public void onFetchDataResult(NewsBean[] newsBean) {
+        Log.i(TAG, String.valueOf(newsBean[0]));
+        mAdapter.appendData(newsBean);
     }
 }

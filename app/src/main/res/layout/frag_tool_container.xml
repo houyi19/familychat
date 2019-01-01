@@ -52,6 +52,22 @@
             android:layout_margin="5dp"
             app:tool_item_icon="@drawable/icon_map"
             app:tool_item_txt="@string/tool_container_map" />
+
+        <com.study.familychat.tool.views.ToolItemView
+            android:id="@+id/frag_tool_container_idcard"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            app:tool_item_icon="@drawable/icon_search"
+            app:tool_item_txt="@string/tool_container_idcard" />
+
+        <com.study.familychat.tool.views.ToolItemView
+            android:id="@+id/frag_tool_container_phone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            app:tool_item_icon="@drawable/icon_search"
+            app:tool_item_txt="@string/tool_container_phone" />
     </LinearLayout>
 
 </ScrollView>

@@ -11,11 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.study.familychat.R;
+import com.study.familychat.tool.fragment.IdCardDialogFragment;
 import com.study.familychat.tool.views.ToolItemView;
 
 public class ToolContainerFragment extends Fragment implements View.OnClickListener {
 
-    private ToolItemView mCalendar, mWeather,mCall, mResearch, mMap;
+    private ToolItemView mCalendar, mWeather, mCall, mResearch, mMap, mPhone, mIdCard;
 
 
     public static ToolContainerFragment newInstance() {
@@ -37,11 +38,15 @@ public class ToolContainerFragment extends Fragment implements View.OnClickListe
         mWeather = v.findViewById(R.id.frag_tool_container_weather);
         mResearch = v.findViewById(R.id.frag_tool_container_research);
         mMap = v.findViewById(R.id.frag_tool_container_map);
+        mIdCard = v.findViewById(R.id.frag_tool_container_idcard);
+        mPhone = v.findViewById(R.id.frag_tool_container_phone);
         mCalendar.setOnClickListener(this);
         mCall.setOnClickListener(this);
         mWeather.setOnClickListener(this);
         mResearch.setOnClickListener(this);
         mMap.setOnClickListener(this);
+        mPhone.setOnClickListener(this);
+        mIdCard.setOnClickListener(this);
         return v;
     }
 
@@ -62,6 +67,12 @@ public class ToolContainerFragment extends Fragment implements View.OnClickListe
                 break;
             case R.id.frag_tool_container_map:
                 toMap();
+                break;
+            case R.id.frag_tool_container_idcard:
+                toIdCard();
+                break;
+            case R.id.frag_tool_container_phone:
+                toPhoneLocation();
                 break;
             default:
                 break;
@@ -94,8 +105,20 @@ public class ToolContainerFragment extends Fragment implements View.OnClickListe
 
     }
 
+    //跳转第三方高德地图
     private void toMap() {
         Intent i = new Intent(getActivity(), MapActivity.class);
         startActivity(i);
+    }
+
+    //弹出身份证查询dialog
+
+    private void toIdCard() {
+        IdCardDialogFragment.start(getActivity());
+    }
+
+    //弹出手机归属地查询dialog
+    private void toPhoneLocation() {
+
     }
 }
