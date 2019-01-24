@@ -6,9 +6,11 @@
     tools:context=".chat.PhotoFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <cn.jiguang.imui.messages.MessageList
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="300dp" />
+    <cn.jiguang.imui.chatinput.ChatInputView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </FrameLayout>

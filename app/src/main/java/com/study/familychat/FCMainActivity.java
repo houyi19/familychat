@@ -1,6 +1,7 @@
 package com.study.familychat;
 
 import android.annotation.SuppressLint;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,7 @@ public class FCMainActivity extends AppCompatActivity {
     private TabLayout mNavBottom;
     private TextView mMainTitle;
     private static int PAGE_NUM = 3;
+    private CoordinatorLayout mTitleBar;
 
 
     @Override
@@ -95,5 +97,10 @@ public class FCMainActivity extends AppCompatActivity {
         if (fragment != null) {
             FragmentManagerUtil.replaceFragment(getSupportFragmentManager(), R.id.act_fc_page, fragment);
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 }

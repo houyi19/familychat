@@ -15,8 +15,15 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.study.familychat.R;
+import com.study.familychat.bean.peoplebean;
+import com.study.familychat.network.NetHandler;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
 
 /**
  * Author by yi.hou
@@ -76,10 +83,33 @@ public class IdCardDialogFragment extends DialogFragment implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.frag_tool_dialog_commit:
+                Toast.makeText(getContext(),getResult(mContent.getText().toString()),Toast.LENGTH_SHORT).show();
                 dismissAllowingStateLoss();
                 break;
         }
     }
 
+    //获取编辑框中的id信息
+    private String getResult(String msg) {
+        final String[] res = {null};
+       NetHandler.FetchIDCardResponse(msg).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<peoplebean>() {
+           @Override
+           public void accept(peoplebean peoplebean) throws Exception {
+               res[0] = peoplebean.result.area;
+           }
+       }, new Consumer<Throwable>() {
+           @Override
+           public void accept(Throwable throwable) throws Exception {
+
+           }
+       }, new Action() {
+           @Override
+           public void run() throws Exception {
+
+           }
+       });
+
+       return res[0];
+    }
 
 }

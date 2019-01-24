@@ -49,4 +49,9 @@ dependencies {
     implementation 'com.amap.api:map2d:5.2.0'
     implementation 'com.amap.api:location:4.4.0'
     implementation 'com.amap.api:search:6.5.0'
+
+    //聊天UI库 输入InputView
+    implementation 'cn.jiguang.imui:chatinput:0.10.0'
+    //聊天UI库，输入的消息列表
+    implementation 'cn.jiguang.imui:messagelist:0.8.0'
 }

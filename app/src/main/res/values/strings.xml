@@ -11,4 +11,5 @@
     <string name="tool_container_map">地图导航</string>
     <string name="tool_container_idcard">身份证查询</string>
     <string name="tool_container_phone">手机归属地查询</string>
+    <string name="base_error_retry">重试</string>
 </resources>
