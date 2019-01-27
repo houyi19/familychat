@@ -2,7 +2,50 @@
 <resources>
 
     <declare-styleable name="ToolItemView">
-        <attr name="tool_item_txt" format="string"/>
-        <attr name="tool_item_icon" format="reference"/>
+        <attr name="tool_item_txt" format="string" />
+        <attr name="tool_item_icon" format="reference" />
+    </declare-styleable>
+
+    <!--日历自定义的属性-->
+    <declare-styleable name="CustomeCalendarView">
+        <!--是否显示农历-->
+        <attr name="show_lunar" format="boolean" />
+        <!--是否显示上月和下月-->
+        <attr name="show_next_month" format="boolean" />
+        <!--是否显示节假日-->
+        <attr name="show_holiday" format="boolean" />
+        <!--是否显示节气-->
+        <attr name="show_term" format="boolean" />
+        <!--阳历的日期颜色-->
+        <attr name="solar_color" format="color" />
+        <!--阳历的日期尺寸-->
+        <attr name="solar_size" format="integer" />
+        <!--农历的日期颜色-->
+        <attr name="lunar_color" format="color" />
+        <!--农历的日期尺寸-->
+        <attr name="lunar_size" format="integer" />
+        <!--选中的日期的文字颜色-->
+        <attr name="select_day_text_color" format="color" />
+        <!--选中的日期的背景-->
+        <attr name="select_day_bg_color" format="reference" />
+        <!--节日颜色-->
+        <attr name="holiday_color" format="color" />
+        <!--单选时切换月份，是否选中上次的日期-->
+        <attr name="switch_choose" format="boolean" />
+        <!--设置单选、多选-->
+        <attr name="choose_type" format="enum">
+            <enum name="single" value="0" />
+            <enum name="multi" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <!--自定义日历周视图-->
+    <declare-styleable name="WeekView">
+        <!--周的表示形式（x.x.x.x.x.x.x）-->
+        <attr name="week_str" format="string" />
+        <!--周的文字颜色-->
+        <attr name="week_color" format="color" />
+        <!--周的文字大小-->
+        <attr name="week_size" format="integer" />
     </declare-styleable>
 </resources>
