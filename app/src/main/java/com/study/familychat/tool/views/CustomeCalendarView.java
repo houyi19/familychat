@@ -110,7 +110,13 @@ public class CustomeCalendarView extends ViewPager {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
         int mCalendarHeight;
-
+        if (getAdapter() != null) {
+            MonthView view = (MonthView) getChildAt(0);
+            if (view != null) {
+                mCalendarHeight = view.getMeasuredHeight();
+                setMeasuredDimension(widthMeasureSpec, MeasureSpec.makeMeasureSpec(mCalendarHeight, MeasureSpec.EXACTLY));
+            }
+        }
 
     }
 
