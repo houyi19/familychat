@@ -102,7 +102,9 @@ public class ToolContainerFragment extends Fragment implements View.OnClickListe
     }
 
     private void toCalender() {
-
+        Intent i = new Intent(getActivity(), CalendarActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
     }
 
     //跳转第三方高德地图

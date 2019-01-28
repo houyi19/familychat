@@ -17,6 +17,7 @@ import com.study.familychat.tool.listener.OnMultiChooseListener;
 import com.study.familychat.tool.listener.OnPagerChangeListener;
 import com.study.familychat.tool.listener.OnSingleChooseListener;
 import com.study.familychat.utils.CalendarUtil;
+import com.study.familychat.utils.LunarUtil;
 import com.study.familychat.utils.SolarUtil;
 
 import java.util.ArrayList;
@@ -67,29 +68,43 @@ public class CustomeCalendarView extends ViewPager {
             int attr = typedArray.getIndex(i);
             switch (attr) {
                 case R.styleable.CustomeCalendarView_show_lunar:
-                    typedArray.getBoolean(R.styleable.CustomeCalendarView_show_lunar, true);
+                    boolean showLunar = typedArray.getBoolean(attr, true);
+                    if (showLunar) {
+                        mAttrsBean.setShowLunar(showLunar);
+                    }
                     break;
                 case R.styleable.CustomeCalendarView_show_next_month:
+                    mAttrsBean.setShowLastNext(typedArray.getBoolean(attr, true));
                     break;
                 case R.styleable.CustomeCalendarView_show_term:
+                    mAttrsBean.setShowTerm(typedArray.getBoolean(attr, true));
                     break;
                 case R.styleable.CustomeCalendarView_show_holiday:
+                    mAttrsBean.setShowHoliday(typedArray.getBoolean(attr, true));
                     break;
                 case R.styleable.CustomeCalendarView_solar_color:
+                    mAttrsBean.setColorSolar(typedArray.getColor(attr, mAttrsBean.getColorSolar()));
                     break;
                 case R.styleable.CustomeCalendarView_solar_size:
+                    mAttrsBean.setSizeSolar(CalendarUtil.getTextSize(context,typedArray.getInt(attr, mAttrsBean.getSizeSolar())));
                     break;
                 case R.styleable.CustomeCalendarView_lunar_color:
+                    mAttrsBean.setColorLunar(typedArray.getColor(attr, mAttrsBean.getColorLunar()));
                     break;
                 case R.styleable.CustomeCalendarView_lunar_size:
+                    mAttrsBean.setSizeLunar(CalendarUtil.getTextSize(context,typedArray.getInt(attr, mAttrsBean.getSizeLunar())));
                     break;
                 case R.styleable.CustomeCalendarView_holiday_color:
+                    mAttrsBean.setColorHoliday(typedArray.getColor(attr, mAttrsBean.getColorHoliday()));
                     break;
                 case R.styleable.CustomeCalendarView_select_day_bg_color:
+                    mAttrsBean.setDayBg(typedArray.getResourceId(attr, mAttrsBean.getDayBg()));
                     break;
                 case R.styleable.CustomeCalendarView_select_day_text_color:
+                    mAttrsBean.setColorChoose(typedArray.getColor(attr, mAttrsBean.getColorChoose()));
                     break;
                 case R.styleable.CustomeCalendarView_choose_type:
+                    mAttrsBean.setChooseType(typedArray.getInt(attr,mAttrsBean.getChooseType()));
                     break;
                 default:
                     break;
@@ -120,7 +135,7 @@ public class CustomeCalendarView extends ViewPager {
 
     }
 
-    private void inItView() {
+    public void inItView() {
 //        根据设定的日期范围计算日历的页数;
         count = (endDate[0] - startDate[0]) * 12 + endDate[1] - startDate[1] + 1;
         mCustomDateAdapter = new CustomDateAdapter(count);

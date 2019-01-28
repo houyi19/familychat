@@ -42,8 +42,10 @@
         <activity
             android:name=".tool.MapActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".tool.WeatherActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".tool.WeatherActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".tool.CalendarActivity"></activity>
     </application>
 
 </manifest>

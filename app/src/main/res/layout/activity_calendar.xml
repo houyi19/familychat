@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:calendarview="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_transparency_350"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".tool.fragment.WeatherFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="50dp"
+            android:background="@mipmap/last"
+            android:onClick="lastMonth" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="50dp"
+            android:background="@mipmap/next"
+            android:onClick="nextMonth" />
+
+    </RelativeLayout>
+
+    <com.study.familychat.tool.views.WeekView
+        android:layout_width="match_parent"
+        android:layout_height="35dp" />
+
+    <com.study.familychat.tool.views.CustomeCalendarView
+        android:id="@+id/calendar"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        calendarview:choose_type="single"
+        calendarview:show_holiday="true"
+        calendarview:show_lunar="true"
+        calendarview:show_term="true"
+        calendarview:switch_choose="false" />
+
+</LinearLayout>
