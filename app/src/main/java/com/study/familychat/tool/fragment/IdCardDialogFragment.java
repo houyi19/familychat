@@ -14,16 +14,20 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.orhanobut.logger.Logger;
 import com.study.familychat.R;
+import com.study.familychat.bean.PeopleResultInfo;
 import com.study.familychat.bean.peoplebean;
 import com.study.familychat.network.NetHandler;
+
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Author by yi.hou
@@ -83,7 +87,8 @@ public class IdCardDialogFragment extends DialogFragment implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.frag_tool_dialog_commit:
-                Toast.makeText(getContext(),getResult(mContent.getText().toString()),Toast.LENGTH_SHORT).show();
+                String res = getResult(mContent.getText().toString());
+                Toast.makeText(getContext(),res,Toast.LENGTH_SHORT).show();
                 dismissAllowingStateLoss();
                 break;
         }
@@ -91,21 +96,22 @@ public class IdCardDialogFragment extends DialogFragment implements View.OnClick
 
     //获取编辑框中的id信息
     private String getResult(String msg) {
-        final String[] res = {null};
-       NetHandler.FetchIDCardResponse(msg).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<peoplebean>() {
+        final String[] res = new String[1];
+       NetHandler.FetchIDCardResponse(msg).subscribeOn(Schedulers.io()).map(new Function<peoplebean,PeopleResultInfo>() {
            @Override
-           public void accept(peoplebean peoplebean) throws Exception {
-               res[0] = peoplebean.result.area;
+           public PeopleResultInfo apply(peoplebean peoplebean) throws Exception {
+               Logger.i(peoplebean.result.toString());
+               return peoplebean.result;
+           }
+       }).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<PeopleResultInfo>() {
+           @Override
+           public void accept(PeopleResultInfo peopleResultInfo) throws Exception {
+               res[0] = peopleResultInfo.area;
            }
        }, new Consumer<Throwable>() {
            @Override
            public void accept(Throwable throwable) throws Exception {
-
-           }
-       }, new Action() {
-           @Override
-           public void run() throws Exception {
-
+               Logger.e(throwable.getMessage());
            }
        });
 

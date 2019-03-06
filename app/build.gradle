@@ -58,6 +58,8 @@ dependencies {
     implementation 'cn.jiguang.imui:chatinput:0.10.0'
     //聊天UI库，输入的消息列表
     implementation 'cn.jiguang.imui:messagelist:0.8.0'
+    //log库
+    implementation 'com.orhanobut:logger:2.2.0'
 }
 
 File propFile = file('signingconfig.properties')

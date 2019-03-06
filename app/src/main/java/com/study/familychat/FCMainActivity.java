@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.orhanobut.logger.Logger;
 import com.study.familychat.chat.PhotoFragment;
 import com.study.familychat.models.NavBottomData;
 import com.study.familychat.news.NewsFragment;
@@ -30,6 +31,7 @@ public class FCMainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Logger.i("onCreate");
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -82,14 +84,17 @@ public class FCMainActivity extends AppCompatActivity {
         Fragment fragment = null;
         switch (pos) {
             case 0:
+                Logger.i("select 亲友圈");
                 fragment = PhotoFragment.newInstance();
                 mMainTitle.setText("亲友圈");
                 break;
             case 1:
+                Logger.i("select 新闻");
                 fragment = NewsFragment.newInstance();
                 mMainTitle.setText("新闻");
                 break;
             case 2:
+                Logger.i("select 工具");
                 fragment = ToolContainerFragment.newInstance();
                 mMainTitle.setText("工具");
                 break;
