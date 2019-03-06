@@ -11,7 +11,12 @@ import com.study.familychat.retrofit.NewsService;
 import com.study.familychat.retrofit.PeopleService;
 import com.study.familychat.retrofit.PhoneService;
 
+import java.text.DateFormatSymbols;
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.Observable;
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -33,10 +38,19 @@ public class NetHandler {
     private static final String URL_BASE2 = "http://api.juheapi.com/";
     private static final String URL_BASE3 = "http://v.juhe.cn/";
 
+    //超时时间设置
+    private static final long DEFAULT_TIMEOUT = 10;
+
+    //log开关
+    private static final boolean DEBUG = true;
 
     private static Retrofit getRetrofit(String url) {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(url)
-                .addConverterFactory(GsonConverterFactory.create()).addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build();
+        OkHttpClient.Builder client = new OkHttpClient().newBuilder().connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS).retryOnConnectionFailure(true);
+        if (DEBUG) {
+            client.addInterceptor(new LogInterceptor());
+        }
+            Retrofit retrofit = new Retrofit.Builder().baseUrl(url).client(client.build())
+                    .addConverterFactory(GsonConverterFactory.create()).addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build();
 
         return retrofit;
     }
