@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.study.familychat.R;
 import com.study.familychat.tool.fragment.IdCardDialogFragment;
+import com.study.familychat.tool.fragment.PhoneLocationDialogFragment;
 import com.study.familychat.tool.views.ToolItemView;
 
 public class ToolContainerFragment extends Fragment implements View.OnClickListener {
@@ -121,6 +122,6 @@ public class ToolContainerFragment extends Fragment implements View.OnClickListe
 
     //弹出手机归属地查询dialog
     private void toPhoneLocation() {
-
+        PhoneLocationDialogFragment.start(getActivity());
     }
 }

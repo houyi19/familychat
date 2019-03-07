@@ -27,6 +27,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -95,7 +96,15 @@ public class IdCardDialogFragment extends DialogFragment implements View.OnClick
     //获取编辑框中的id信息
     private void getResult(String msg) {
         final String[] res = new String[1];
-       NetHandler.FetchIDCardResponse(msg).subscribeOn(Schedulers.io()).map(new Function<peoplebean,PeopleResultInfo>() {
+       NetHandler.FetchIDCardResponse(msg).subscribeOn(Schedulers.io()).filter(new Predicate<peoplebean>() {
+           @Override
+           public boolean test(peoplebean peoplebean) throws Exception {
+               if (peoplebean.resultcode.equals("201")) {
+                   return false;
+               }
+               return true;
+           }
+       }).map(new Function<peoplebean,PeopleResultInfo>() {
            @Override
            public PeopleResultInfo apply(peoplebean peoplebean) throws Exception {
                Logger.i(peoplebean.result.toString());

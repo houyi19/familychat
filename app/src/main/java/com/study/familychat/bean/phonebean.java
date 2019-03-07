@@ -15,14 +15,14 @@ public class phonebean {
     }
 
     @SerializedName("reason")
-    private String reason;
+    public String reason;
 
     @SerializedName("resultcode")
-    private String resultcode;
+    public String resultcode;
 
     @SerializedName("result")
-    private PhoneResultInfo result;
+    public PhoneResultInfo result;
 
     @SerializedName("error_code")
-    private int error_code;
+    public int error_code;
 }
