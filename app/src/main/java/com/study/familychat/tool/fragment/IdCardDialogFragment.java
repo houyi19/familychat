@@ -87,15 +87,13 @@ public class IdCardDialogFragment extends DialogFragment implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.frag_tool_dialog_commit:
-                String res = getResult(mContent.getText().toString());
-                Toast.makeText(getContext(),res,Toast.LENGTH_SHORT).show();
-                dismissAllowingStateLoss();
+                getResult(mContent.getText().toString());
                 break;
         }
     }
 
     //获取编辑框中的id信息
-    private String getResult(String msg) {
+    private void getResult(String msg) {
         final String[] res = new String[1];
        NetHandler.FetchIDCardResponse(msg).subscribeOn(Schedulers.io()).map(new Function<peoplebean,PeopleResultInfo>() {
            @Override
@@ -112,10 +110,22 @@ public class IdCardDialogFragment extends DialogFragment implements View.OnClick
            @Override
            public void accept(Throwable throwable) throws Exception {
                Logger.e(throwable.getMessage());
+               Toast.makeText(getContext(),getResources().getString(R.string.check_card_number),Toast.LENGTH_SHORT).show();
+               dismissAllowingStateLoss();
+           }
+       }, new Action() {
+           @Override
+           public void run() throws Exception {
+               Toast.makeText(getContext(),res[0],Toast.LENGTH_SHORT).show();
+               dismissAllowingStateLoss();
            }
        });
+    }
 
-       return res[0];
+
+//    得到结果弹出一个新的dialog;
+    private void alterReslutDialog() {
+
     }
 
 }

@@ -3,8 +3,5 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<com.amap.api.maps2d.MapView
-    android:id="@+id/act_tool_map"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+
 </LinearLayout>
